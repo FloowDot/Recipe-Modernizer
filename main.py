@@ -11,9 +11,28 @@ def not_blank(question):
     else:
       return response
 
-    return response
-
 #Main routine goes here
 recipe_name = not_blank("Please enter the name of your recipe: ")
 
-print("You are making {}".format(recipe_name))
+error = ("Your recipe name contains a number")
+noError = ("No errors detected :)")
+message = error
+hasErrors = False
+numError = False
+
+
+
+
+for letter in recipe_name:
+  if letter.isdigit() == True:
+    hasErrors = True
+    numError = True
+    
+
+if hasErrors == False:
+  message = noError
+
+if numError == True:
+  print(error) 
+
+print("You are making {}".format(recipe_name),": ", message)
